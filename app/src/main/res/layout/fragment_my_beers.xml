@@ -5,11 +5,11 @@
     android:background="@color/mainOrange"
     tools:context="com.beerdeer.activity.MyBeersFragment">
 
-    <ListView
+    <view
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        class="android.support.v7.widget.RecyclerView"
         android:id="@+id/beer_list"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:choiceMode="singleChoice" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

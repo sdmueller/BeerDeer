@@ -20,6 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.beerdeer.R;
+import com.beerdeer.adapter.BeerRowAdapter;
+import com.beerdeer.model.BeerRowItem;
+import com.beerdeer.model.NavDrawerItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +33,20 @@ public class MyBeersFragment extends Fragment {
 
     public MyBeersFragment() {
         // Required empty public constructor
+    }
+
+    public static List<BeerRowItem> getData() {
+        List<BeerRowItem> data = new ArrayList<>();
+
+        BeerRowItem pilsnerUrquell = new BeerRowItem("Pilsner Urquell", R.drawable.pilsnerurquell);
+        BeerRowItem budweiserDark = new BeerRowItem(("Budweiser Dark"), R.drawable.budweiserdark);
+        BeerRowItem duvel = new BeerRowItem("Duvel", R.drawable.duvel);
+
+        data.add(pilsnerUrquell);
+        data.add(budweiserDark);
+        data.add(duvel);
+
+        return data;
     }
 
     @Override
@@ -43,16 +60,10 @@ public class MyBeersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my_beers, container, false);
 
-        ListView beerList = (ListView)rootView.findViewById(R.id.beer_list);
-
-        ArrayList<String> beers = new ArrayList<>();
-        beers.add("Pilsner Urquell");
-        beers.add("Budweiser Dark");
-        beers.add("Duvel");
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, beers);
-
+        RecyclerView beerList = (RecyclerView)rootView.findViewById(R.id.beer_list);
+        BeerRowAdapter adapter = new BeerRowAdapter(getActivity(), getData());
         beerList.setAdapter(adapter);
+        beerList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Inflate the layout for this fragment
         return rootView;
