@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.beerdeer.R;
-import com.beerdeer.adapter.BeerRowAdapter;
 import com.beerdeer.adapter.NavigationDrawerAdapter;
 import com.beerdeer.model.NavDrawerItem;
 

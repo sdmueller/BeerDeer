@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_events);
                 break;
             case 2:
-                fragment = new BeerFragment();
+                fragment = new ShopsFragment();
                 title = getString(R.string.title_shops);
                 break;
             default:
