@@ -30,10 +30,14 @@ public class BeerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_beer, container, false);
+
+        Bundle bundle = this.getArguments();
+
         ImageView beerImg = (ImageView)rootView.findViewById(R.id.beer_img);
-        beerImg.setImageResource(savedInstanceState.getInt("beer_img"));
+        beerImg.setImageResource(bundle.getInt("beer_img"));
+
         TextView beerName = (TextView)rootView.findViewById(R.id.beer_name);
-        beerName.setText(savedInstanceState.getString("beer_name"));
+        beerName.setText(bundle.getString("beer_name"));
 
         return rootView;
     }
