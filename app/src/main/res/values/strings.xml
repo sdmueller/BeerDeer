@@ -5,17 +5,20 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <string name="nav_item_home">Home</string>
     <string name="nav_item_mybeers">My Beers</string>
     <string name="nav_item_events">Events</string>
     <string name="nav_item_shops">Shops</string>
 
     <!-- navigation drawer item labels -->
     <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_home</item>
         <item>@string/nav_item_mybeers</item>
         <item>@string/nav_item_events</item>
         <item>@string/nav_item_shops</item>
     </string-array>
 
+    <string name="title_home">Home</string>
     <string name="title_mybeers">My Beers</string>
     <string name="title_events">Events</string>
     <string name="title_shops">Shops</string>

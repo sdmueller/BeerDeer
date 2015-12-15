@@ -74,14 +74,18 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         System.out.println(position);
         switch(position) {
             case 0:
+                fragment = new HomeFragment();
+                title = getString(R.string.title_home);
+                break;
+            case 1:
                 fragment = new MyBeersFragment();
                 title = getString(R.string.title_mybeers);
                 break;
-            case 1:
+            case 2:
                 fragment = new EventsFragment();
                 title = getString(R.string.title_events);
                 break;
-            case 2:
+            case 3:
                 fragment = new ShopsFragment();
                 title = getString(R.string.title_shops);
                 break;
@@ -96,8 +100,20 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             fragmentTransaction.replace(R.id.container_body, fragment);
             fragmentTransaction.commit();
 
-            //set the toolbar title
-            getSupportActionBar().setTitle(title);
+            if(position == 0) {
+                //set logo instead of title for home fragment
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setDisplayUseLogoEnabled(true);
+                getSupportActionBar().setLogo(R.drawable.logo);
+            } else {
+                //set the toolbar title
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
+                getSupportActionBar().setDisplayUseLogoEnabled(false);
+                getSupportActionBar().setTitle(title);
+
+                //would also work instead of disabling logo
+                //getSupportActionBar().setLogo(android.R.color.transparent);
+            }
         }
     }
 }
