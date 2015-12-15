@@ -3,27 +3,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainOrange"
-    tools:context="com.beerdeer.activity.EventsFragment">
+    tools:context="com.beerdeer.activity.EventsFragment"
+    android:nestedScrollingEnabled="false"
+    android:focusable="false">
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="45dp"
-        android:text="@string/title_home"
-        android:textStyle="bold"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/horizontalScrollView" >
 
-    <TextView
-        android:layout_below="@id/label"
-        android:layout_centerInParent="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="fragment_home.xml apasse" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="4dp"
+                android:id="@+id/divider2"
+                android:background="#c8ffffff"
+                android:layout_alignWithParentIfMissing="false"
+                android:cropToPadding="false"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/beerofthedayheader"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="4dp"
+                android:id="@+id/divider1"
+                android:background="#c8ffffff"
+                android:layout_alignWithParentIfMissing="false"
+                android:cropToPadding="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/divider2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="40dp" />
+
+            <ImageView
+                android:layout_width="205dp"
+                android:layout_height="40dp"
+                android:id="@+id/beerofthedayheader"
+                android:src="@drawable/beeroftheday"
+                android:layout_below="@+id/divider1"
+                android:layout_centerHorizontal="true" />
+
+            <RelativeLayout
+                android:layout_width="400dp"
+                android:layout_height="350dp"
+                android:background="#aaffffff"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="29dp"
+                android:layout_below="@+id/divider2"
+                android:layout_centerInParent="true"
+                android:clickable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Kingfisher"
+                    android:id="@+id/beer_name"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp" />
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="266dp"
+                    android:id="@+id/beer_img"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

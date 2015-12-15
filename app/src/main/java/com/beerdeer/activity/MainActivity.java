@@ -5,11 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beerdeer.R;
@@ -26,6 +29,12 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar_title);
+
+        ImageView logo = (ImageView)getSupportActionBar().getCustomView().findViewById(R.id.logo);
+        logo.setImageResource(R.drawable.logo);
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         drawerFragment = (FragmentDrawer)getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
@@ -103,16 +112,29 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             if(position == 0) {
                 //set logo instead of title for home fragment
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
-                getSupportActionBar().setDisplayUseLogoEnabled(true);
-                getSupportActionBar().setLogo(R.drawable.logo);
+                getSupportActionBar().setDisplayUseLogoEnabled(false);
+
+                // Remove text from title
+                TextView titleView = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.title);
+                titleView.setText("");
+
+                // Set logo
+                ImageView logo = (ImageView)getSupportActionBar().getCustomView().findViewById(R.id.logo);
+                logo.setImageResource(R.drawable.logo);
             } else {
                 //set the toolbar title
                 getSupportActionBar().setDisplayShowTitleEnabled(true);
-                getSupportActionBar().setDisplayUseLogoEnabled(false);
-                getSupportActionBar().setTitle(title);
 
-                //would also work instead of disabling logo
-                //getSupportActionBar().setLogo(android.R.color.transparent);
+                // Remove the logo from action bar
+                ImageView logo = (ImageView)getSupportActionBar().getCustomView().findViewById(R.id.logo);
+                logo.setImageResource(0);
+
+                // Replace the logo with the title of the fragment
+                TextView titleView = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.title);
+                titleView.setText(title);
+
+                // would also work instead of disabling logo
+                // getSupportActionBar().setLogo(android.R.color.transparent);
             }
         }
     }
